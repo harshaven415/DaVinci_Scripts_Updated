@@ -56,7 +56,8 @@ if __name__ == "__main__":
                 profileD[bits] += 1
                 tot += 1
 
-    print(f"unique bits vectors: {len(unique_bits)} from total: {tot}")
+    print()
+    print(f"Unique bit vectors: {len(unique_bits)} from total: {tot}")
 
     merged_db = open("merged.db", "w")
     merged_txt = open("merged.txt", "w")
