@@ -5,13 +5,11 @@ for file in *.csv; do
     base=$(basename "$file" .csv)
     echo "Finding optimal K for $file..."
 
-    # Capture the last line (best K)
     optimal_k=$(python find-optimal-k.py \
         -i "$file" \
         -t "$base" \
         | tail -n 1)
 
-    # Sanity check
     if [[ ! "$optimal_k" =~ ^[0-9]+$ ]]; then
         echo "⚠️ Could not parse optimal K for $file. Defaulting to 3."
         optimal_k=3
