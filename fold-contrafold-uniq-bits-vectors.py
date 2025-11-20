@@ -23,10 +23,12 @@ def generate_constraints(ref, profile):
 
 def handler():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-b", "--bit_file", type=str)
+    parser.add_argument("-b", "--bit_file", type=str, required=True)
     parser.add_argument("-r", "--reference_file", type=str)
     parser.add_argument("-t", "--transcript", type=str)
     parser.add_argument("-s", "--size_file", type=str)
+
+    bit_basename = os.[path.basename(args.bit_file))[0]
 
     parser.set_defaults(
         bit_file='merged_R1_R2.bit',
@@ -59,10 +61,10 @@ if __name__ == "__main__":
     print()
     print(f"Unique bit vectors: {len(unique_bits)} from total: {tot}")
 
-    merged_db = open("merged.db", "w")
-    merged_txt = open("merged.txt", "w")
-    merged_el = open("merged.element_string", "w")
-    outS = open(args.size_file, "w")
+    merged_db = open(f"{bit_basename}.db", "w")
+    merged_txt = open(f"{bit_basename}.txt", "w")
+    merged_el = open(f"{bit_basename}.element_string", "w")
+    outS = open(f"{bit_basename}.size", "w")
 
     seen = defaultdict(int)
 
